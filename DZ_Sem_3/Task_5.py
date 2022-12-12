@@ -12,10 +12,10 @@ def fiblist(a):
         fib.append(fib[i-1]+fib[i-2])
     for i in range(0, a):
         negfib.append(fib[a-i])
-        if i % 2 == 0:
+        if (a-i) % 2 == 0:
             negfib[i] = negfib[i]*(-1)
     result = negfib + fib
     return result
 
 
-print(fiblist(8))
+print(fiblist(7))
