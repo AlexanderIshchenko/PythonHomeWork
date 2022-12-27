@@ -1,0 +1,50 @@
+import sys
+import random
+print('\nУсловие задачи:\n \nНа столе лежит 2021 конфета.'
+      '\nИграют два игрока делая ход друг после друга.'
+      '\nПервый ход определяется жеребьёвкой.'
+      '\nЗа один ход можно забрать не более чем 28 конфет.'
+      '\nВсе конфеты оппонента достаются сделавшему последний ход\n')
+candy = 2021
+while candy > 0:
+    if candy > 28:
+        player = input(
+            'Игрок 1: Сколько конфет возьмете? (от 1 до 28) --> ')
+        while (not player.isdigit()):
+            player = input(
+                'Необходимо ввести натуральное число (от 1 до 28) --> ')
+        while (int(player) > 28 or int(player) < 1):
+            player = input(
+                'Необходимо ввести натуральное число (от 1 до 28) --> ')
+
+    else:
+        player = input(
+            f'Игрок 1: Сколько конфет возьмете? (от 1 до {candy}) --> ')
+        while (not player.isdigit()):
+            player = input(
+                f'Необходимо ввести натуральное число (от 1 до {candy}) --> ')
+        while (int(player) > candy or int(player) < 1):
+            player = input(
+                f'Необходимо ввести натуральное число (от 1 до {candy}) --> ')
+
+    candy -= int(player)
+    print(candy)
+
+    if candy == 0:
+        print('Вы победили!')
+        sys.exit()
+
+    if candy > 28:
+        bot = random.randint(1, 29)
+        print(f'Бот: --> {bot}')
+
+    else:
+        bot = random.randint(1, candy)
+        print(f'Бот: --> {bot}')
+
+    candy -= bot
+    print(candy)
+
+    if candy == 0:
+        print('Вы проиграли!')
+        sys.exit()
